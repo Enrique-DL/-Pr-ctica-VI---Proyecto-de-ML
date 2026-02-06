@@ -1,8 +1,10 @@
 fastapi
 uvicorn
-pandas
-scikit-learn
+pandas==1.5.3
+scikit-learn==1.0.2
 mlflow
-joblib
-numpy
+joblib==1.2.0
+numpy==1.23.5
 pydantic
+
+
