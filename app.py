@@ -8,7 +8,7 @@ from mlflow.models import infer_signature
 
 
 
-mlflow.set_tracking_uri("databricks")
+mlflow.set_tracking_uri("databricks-uc")
 
 RUTA_MODELO = "models:/workspace.default.modelofinal/1"
 
