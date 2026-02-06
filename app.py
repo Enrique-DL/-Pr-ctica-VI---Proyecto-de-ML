@@ -106,10 +106,44 @@ def predict(data: ParadosInput):
         # Convertir a DataFrame usando los nombres de los ALIAS 
         df_input = pd.DataFrame([data.model_dump(by_alias=True)])
         
-        # Aseguramos que el DF tenga el orden correcto
-        storage["columns"] = joblib.load("columnas.pkl")
+        COLUMNS = [
+    "AÑO",
+    "MES",
 
-        df_input = df_input[storage["columns"]]
+    # Islas
+    "I_El Hierro",
+    "I_Fuerteventura",
+    "I_Gran Canaria",
+    "I_La Gomera",
+    "I_La Palma",
+    "I_Lanzarote",
+    "I_Tenerife",
+
+    # Edad
+    "E_25 años o más",
+    "E_Menor de 25 años",
+
+    # Nivel de estudios
+    "N_V_Educación general",
+    "N_V_Estudios post-secundarios",
+    "N_V_Estudios primarios",
+    "N_V_Estudios primarios completos",
+    "N_V_Estudios primarios incompletos",
+    "N_V_Estudios secundarios",
+    "N_V_Formación profesional",
+    "N_V_Primer ciclo",
+    "N_V_Resto de estudios post-secundarios",
+    "N_V_Segundo y tercer ciclo",
+    "N_V_Sin estudios",
+    "N_V_Técnico profesional superior",
+
+    # Variables económicas
+    "PIB_TOTAL",
+    "CRISIS",
+    "COVID"
+]
+
+        df_input = df_input[COLUMNS]
         
         pred = model.predict(df_input)
         return {"prediction": float(pred[0])}
